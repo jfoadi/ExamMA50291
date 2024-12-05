@@ -10,7 +10,7 @@ import pandas as pd
 import numpy as np
 
 ## Function to create well-separated groups based on seed data frame
-def sepatared_groups(data, separation=3, col_specs=None, n_groups = 3, n_points = 100, random_state=None):
+def sepatared_groups(data, separation=3, col_specs=None, n_groups = 3, n_points = 100, random_state=None, random_simulate_state=None):
     """
     Create well-separated groups based on the seed data frame.
     
@@ -21,6 +21,7 @@ def sepatared_groups(data, separation=3, col_specs=None, n_groups = 3, n_points 
         n_groups (int): The number of groups to create.
         n_points (int): The number of points to simulate for each group.
         random_state (int): Random state for reproducibility.
+        random_simulate_state (int): Random state for simulating data (if not None will mean all clusters will have the same shape).
     
     Returns:
         pd.DataFrame: Data frame with well-separated groups.
@@ -71,7 +72,7 @@ def sepatared_groups(data, separation=3, col_specs=None, n_groups = 3, n_points 
 
                 # Calculate the addition to the mean for the separation
                 # Depending on the number of groups, the separation factor, and the standard deviation
-                addition = (i - n_groups // 2) * col_std * separation
+                addition = (i - n_groups / 2) * col_std * separation
 
                 # Generate the new column value based on the mean, separation, and random component
                 new_data[col] = col_mean + addition + random_component
@@ -85,7 +86,7 @@ def sepatared_groups(data, separation=3, col_specs=None, n_groups = 3, n_points 
 
             # Simulate data points around the new representative points
             # Based on input column specifications
-            simulated_df = simulate_data(new_df, n_points=n_points, col_specs=col_specs, random_state=random_state)
+            simulated_df = simulate_data(new_df, n_points=n_points, col_specs=col_specs, random_state=random_simulate_state)
 
             # Append the simulated data to the list of groups
             all_groups.append(simulated_df)
