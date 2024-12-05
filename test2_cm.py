@@ -32,8 +32,9 @@ if __name__ == '__main__':
 
     # Try this first
     try:
-        crr = cm.corre1ation_matrix(data)
+        crr = cm.calculate_correlation(data)
     except AttributeError as a:
+        print(f"An error has occurred: {a}")
         pass
 
     # Conclusion
