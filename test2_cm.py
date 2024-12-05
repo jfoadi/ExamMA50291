@@ -6,14 +6,6 @@
 ## Import cluster_maker
 import cluster_maker as cm
 
-###
-## To test cluster_maker
-## J. Foadi - University of Bath - 2024
-###
-
-## Import cluster_maker
-import cluster_maker as cm
-
 ## Main
 if __name__ == '__main__':
     # Create input for define_dataframe_structure
@@ -32,9 +24,22 @@ if __name__ == '__main__':
 
     # Try this first
     try:
+    # Not the right function for correlation matrix so make sure to display error not pass over it
         crr = cm.corre1ation_matrix(data)
+        print(crr)
     except AttributeError as a:
-        pass
+        print(f"AttributeError: {a} - The function may not exists in the cluster_maker module")
+    except Exception as e:
+        print(f"An error occured {e}")
 
-    # Conclusion
-    print("Is everything really working?")
+    try:
+        # Put the right function in for correlation matrix and display it (no error displayed)
+        crr = cm.calculate_correlation(data)
+        print(crr)
+    except AttributeError as a:
+        print(f"AttributeError: {a} - The function may not exists in the cluster_maker module")
+    except Exception as e:
+        print(f"An error occured {e}")
+
+# Conclusion
+print("Is everything really working?")
