@@ -1,11 +1,11 @@
 
 # Intelligent Clustering module
 
-# importing relevant packages 
+# importing relevant libraries 
 
-import cluster_maker as cm 
 import pandas as pd
 import numpy as np
+from .dataframe_builder import simulate_data
 
 # Function to create a cluster of data points: 
 
@@ -45,7 +45,7 @@ def create_intelligent_clusters(seed_df, n_points = 100, separation = 10, random
             adjusted_seed_df[col] += i * separation
 
         # Using simulate_data function to generate data points
-        simulated_data = cm.simulate_data(adjusted_seed_df, n_points, random_state = random_state)
+        simulated_data = simulate_data(adjusted_seed_df, n_points, random_state = random_state)
 
         return simulated_data
     
