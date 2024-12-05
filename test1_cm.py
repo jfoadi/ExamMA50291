@@ -13,6 +13,5 @@ column_specs = [
     {'name': 'age', 'reps': [40, 35, 10]}
 ]
 
-## Create the dataframe, based on the above info
 df = cm.define_dataframe_structure(column_specs)
 print(df)
