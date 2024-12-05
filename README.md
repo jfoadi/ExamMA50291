@@ -19,7 +19,13 @@ Three files are added to the repo before starting to solve the test:
 The change I made on test0_cm.py was calling the define_dataframe_structure function from the cluster_maker module and printing its documentation string using the __doc__ attribute.
 
 
-2) 
+2) Modify the package or the file "test1_cm.py" (not both), to make 
+ "test1_cm.py" run successfully.
+
+ I changed the function define_dataframe_structure() in the package cluster_maker/dataframe_builder.py. The change was this:
+    - max_length = max(max_length, len(spec.get('reps', [])-0)+1)
+    + max_length = max(max_length, len(spec.get('reps', [])))
+
 
 
 3) 
@@ -29,6 +35,7 @@ The change I made on test0_cm.py was calling the define_dataframe_structure func
 
 
 5) 
+
 
 
 6) 
