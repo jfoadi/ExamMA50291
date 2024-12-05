@@ -1,4 +1,4 @@
-###
+ ###
 ## To test cluster_maker
 ## J. Foadi - University of Bath - 2024
 ###
@@ -32,9 +32,11 @@ if __name__ == '__main__':
 
     # Try this first
     try:
-        crr = cm.corre1ation_matrix(data)
+        crr = cm.calculate_correlation(data)
+        print("correlation matrix:")
+        print(crr)
     except AttributeError as a:
-        pass
+        print("AttributeError occurred: ", a)
 
     # Conclusion
     print("Is everything really working?")
