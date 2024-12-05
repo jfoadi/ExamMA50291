@@ -30,11 +30,11 @@ if __name__ == '__main__':
     # Simulate 20 data points per group
     data = cm.simulate_data(df, 20)
 
-    # Try this first
+    # Calculate the correlation matrix with the correct method
     try:
-        crr = cm.corre1ation_matrix(data)
+        crr = cm.calculate_correlation(data)
+        print(crr)
+    # Print appropriate error message if exception is raised
     except AttributeError as a:
-        pass
-
-    # Conclusion
-    print("Is everything really working?")
+        print(f"AttributeError: {a}")
+    
