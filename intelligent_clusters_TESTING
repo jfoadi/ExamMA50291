@@ -28,7 +28,7 @@ n_groups = 3
 n_points = 100
 random_state = 42
 
-separated_groups = cm.sepatared_groups(seed_df, separation,col_specs,n_groups,n_points, random_state=random_state)
+separated_groups = cm.sepatared_groups(seed_df, separation, col_specs, n_groups, n_points, random_state=random_state)
 
 plt.scatter(separated_groups['age'], separated_groups['income'])
 plt.xlabel('Age')

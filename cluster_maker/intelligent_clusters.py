@@ -34,7 +34,7 @@ def sepatared_groups(data, separation=3, col_specs=None, n_groups = 3, n_points 
         if not isinstance(separation, (int, float)):
             raise TypeError("separation must be a number")
         # Check if separation is greater than or equal to 1
-        if not (separation < 1):
+        if separation < 1:
             raise ValueError("separation must be greater than 0")
         # Check if n_groups is an integer greater than 1 (we want multiple groups)
         if not isinstance(n_groups, int) or n_groups < 2:
@@ -66,13 +66,14 @@ def sepatared_groups(data, separation=3, col_specs=None, n_groups = 3, n_points 
                 col_mean = data[col].mean()
                 col_std = data[col].std()
 
-                # Add a random component to the column value
-                random_component = np.random.uniform(-separation / 2, separation / 2) / (i+1)
+                # Add a random component to the column value for fun
+                random_component = np.random.uniform(-separation / 2, separation / 2)
 
-                # Calculate the sepatation addition to give each group a different mean
-                addition = (i - n_groups // 2) * separation * col_std
+                # Calculate the addition to the mean for the separation
+                # Depending on the number of groups, the separation factor, and the standard deviation
+                addition = (i - n_groups // 2) * col_std * separation
 
-                # Generate the new column value
+                # Generate the new column value based on the mean, separation, and random component
                 new_data[col] = col_mean + addition + random_component
 
                 # Ensure the sign of the new value is consistent with the original mean
@@ -83,6 +84,7 @@ def sepatared_groups(data, separation=3, col_specs=None, n_groups = 3, n_points 
             new_df = pd.DataFrame(new_data, index=[0])
 
             # Simulate data points around the new representative points
+            # Based on input column specifications
             simulated_df = simulate_data(new_df, n_points=n_points, col_specs=col_specs, random_state=random_state)
 
             # Append the simulated data to the list of groups
