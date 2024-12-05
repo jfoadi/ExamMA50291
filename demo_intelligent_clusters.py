@@ -1,5 +1,6 @@
 import cluster_maker as cm
-from cluster_maker import intelligent_clusters
+from cluster_maker import intelligent_clusters, data_exporter
+
 import seaborn as sns
 import matplotlib.pyplot as plt
 
@@ -21,6 +22,9 @@ def visualize_clusters(data):
     # Show the plot
     plt.tight_layout()
     plt.show()
+
+    # Export the data
+    data_exporter.export_to_csv(data, 'cluster_data.csv')
 
 def main():
     # Create Input for define_dataframe_structure
