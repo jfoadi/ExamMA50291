@@ -19,3 +19,8 @@ from .data_analyser import (
     calculate_correlation,
     calculate_descriptive_statistics
 )
+
+from .intelligent_clusters import (
+    create_clusters,
+    plot_clusters
+)
