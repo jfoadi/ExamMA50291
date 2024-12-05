@@ -1,67 +1,62 @@
+###
+## Demo for visual use of define_dataframe_structure() and simulate_data()
+###
+
+# Import libraries
+import cluster_maker as cm
 import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-from cluster_maker import define_dataframe_structure, simulate_data
-
-def visualize_clusters(data):
-    """
-    Visualizes clustered data using a scatter plot.
-
-    This function creates a scatter plot to visualize the relationship 
-    between height and weight for different groups in the provided 
-    clustered data. Each group is represented by a different color.
-
-    Parameters:
-    ----------
-    data : DataFrame
-        A pandas DataFrame containing the clustered data. 
-    Returns:
-        This function displays the scatter 
-        plot directly.
-    """
-    
-    # Set the style for seaborn
-    sns.set(style="whitegrid")
-
-    # Create a scatter plot for the clustered data
-    plt.figure(figsize=(10, 8))
-    sns.scatterplot(data=data, x="height", y="weight", hue="group", palette="deep", s=100, alpha=0.9)
-
-    # Add titles and labels
-    plt.title("Cluster Visualization: Height vs Weight", fontsize=16)
-    plt.xlabel("Height (cm)", fontsize=14)
-    plt.ylabel("Weight (kg)", fontsize=14)
-    plt.legend(title='Group', bbox_to_anchor=(1.05, 1), loc='upper left')
-    plt.grid(True)
-
-    # Show the plot
-    plt.tight_layout()
-    plt.show()
 
 def main():
-    # Define column specifications for the DataFrame
+    # Create Input for define_dataframe_structure
     column_specs = [
-        {"name": "height", "reps": [180, 160, 120, 100, 80, 150, 170]},
-        {"name": "weight", "reps": [70, 60, 50, 45, 40, 80, 90]},
-        {"name": "age", "reps": [20, 35, 30, 10, 24, 43, 56]},
-    ]
+        {"name": "height", "reps": [180,160,120,100,80,150,170]},
+        {"name": "weight", "reps": [70,60,50,45,40,80,90]},
+        {"name": "age", "reps": [20,35,30,10,24,43,56]},
+    ] 
 
-    # Create the seed DataFrame
-    seed_df = define_dataframe_structure(column_specs)
+    # Define the structure of the dataframe 
+    df = cm.define_dataframe_structure(column_specs)
+    print("Dataframe Created:")
+    print(df)
 
-    # Define simulation specifications
-    col_specs = {
-        'height': {'distribution': 'normal', 'variance': 10},
-        'weight': {'distribution': 'normal', 'variance': 5},
-        'age': {'distribution': 'normal', 'variance': 2},
-    }
+    # Simulate data for the dataframe
+    data = cm.simulate_data(df, 20)
+    print("Simulated Data:")
+    print(data)
+       # Scatter plot for Height vs Weight
+    plt.subplot(3, 1, 1)
+    sns.scatterplot(data=data, x="height", y="weight", color="blue", s=100)
+    plt.title("Height vs Weight", fontsize=12)
+    plt.xlabel("Height (cm)", fontsize=8)
+    plt.ylabel("Weight (kg)", fontsize=8)
+    plt.grid(True)
 
-    # Simulate data based on the seed DataFrame
-    simulated_data = simulate_data(seed_df, n_points=100, col_specs=col_specs, random_state=42)
+    # Scatter plot for Age vs Weight
+    plt.subplot(3, 1, 2)
+    sns.scatterplot(data=data, x="age", y="weight", color="orange", s=100)
+    plt.title("Age vs Weight", fontsize=12)
+    plt.xlabel("Age (years)", fontsize=8)
+    plt.ylabel("Weight (kg)", fontsize=8)
+    plt.grid(True)
 
-    # Visualize the simulated data
-    visualize_data(simulated_data)
+    # Scatter plot for Height vs Age
+    plt.subplot(3, 1, 3)
+    sns.scatterplot(data=data, x="height", y="age", color="green", s=100)
+    plt.title("Height vs Age", fontsize=12)
+    plt.xlabel("Height (cm)", fontsize=8)
+    plt.ylabel("Age (years)", fontsize=8)
+    plt.grid(True)
+
+    # Adjust layout to prevent overlap
+    plt.tight_layout()
+    plt.suptitle("Visualizations of Simulated Data", fontsize=16, y=1.0)
+
+    # Show the plots
+    plt.show()
+
 
 if __name__ == "__main__":
     main()
+
