@@ -7,8 +7,14 @@
 ###
 
 ## Library needed
-import pandas as pd
-import numpy as np
+try:
+    import numpy as np
+except ImportError:
+    raise ImportError("*** ERROR: You do not currently have Numpy installed. Please install it to use this code ***")
+try:
+    import pandas as pd
+except ImportError:
+    raise ImportError("*** ERROR: You do not currently have Pandas installed. Please install it to use this code ***")
 
 ## Function to define the object to hold the groups centers
 def define_dataframe_structure(column_specs):
@@ -42,8 +48,7 @@ def define_dataframe_structure(column_specs):
 
         # Find the maximum length of representative points
         for spec in column_specs:
-            max_length = max(max_length, len(spec.get('reps', [])-0)+1)
-
+            max_length = max(max_length, len(spec.get('reps', [])))
         for spec in column_specs:
             name = spec['name']
             reps = spec.get('reps', [])
