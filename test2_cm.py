@@ -6,14 +6,6 @@
 ## Import cluster_maker
 import cluster_maker as cm
 
-###
-## To test cluster_maker
-## J. Foadi - University of Bath - 2024
-###
-
-## Import cluster_maker
-import cluster_maker as cm
-
 ## Main
 if __name__ == '__main__':
     # Create input for define_dataframe_structure
@@ -28,13 +20,21 @@ if __name__ == '__main__':
     print(df)
 
     # Simulate 20 data points per group
-    data = cm.simulate_data(df, 20)
+    col_specs = {
+        'height': {'distribution': 'normal', 'variance': 5},
+        'weight': {'distribution': 'normal', 'variance': 3},
+        'age': {'distribution': 'normal', 'variance': 2}
+    }
+    data = cm.simulate_data(df, n_points=20, col_specs=col_specs)
+    print('\nSimulated data points:')
+    print(data.head())
 
     # Try this first
     try:
-        crr = cm.corre1ation_matrix(data)
+        crr = cm.calculate_correlation(data)
+        print(crr)
     except AttributeError as a:
-        pass
+        print(f"AttributeError: {a}")
 
     # Conclusion
     print("Is everything really working?")
