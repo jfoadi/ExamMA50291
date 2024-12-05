@@ -57,8 +57,12 @@ def main():
         cluster_labels.extend([cluster_id] * n_points) # how many points per cluster
     data['Cluster'] = cluster_labels # Add cluster labels to the DataFrame for plotting
 
-    cm.plot_clusters(data, x='X', y='Y', cluster_col='Cluster', title='Simulated Data from cluster_maker')
+    cm.plot_clusters(data, x='X', y='Y', cluster_col='Cluster', title='Simulated Data from cluster_maker', save_file='simulated_data.png')
 
+    cm.export_formatted(data, 'simulated_data.txt', include_index=True)
+    cm.export_to_csv(data, 'simulated_data.csv', delimiter=",", include_index=True)
+    
+    
 if __name__ == '__main__':
     main()
     

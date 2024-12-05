@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 from .dataframe_builder import define_dataframe_structure, simulate_data
 from .plot_clusters import plot_clusters
+from .data_exporter import export_formatted, export_to_csv 
 
 def intelligent_cluster_groups(column_specs, n_points=100, col_specs=None, group_separation_factor=1.0, random_state=42):
     
@@ -22,6 +23,8 @@ def intelligent_cluster_groups(column_specs, n_points=100, col_specs=None, group
         cluster_labels.extend([cluster_number] * n_points)
     data['Cluster'] = cluster_labels
 
-    plot_clusters(data, seed_df, title='Cluster Groups with a separation factor of ' + str(group_separation_factor))
+    plot_clusters(data, seed_df, title='Cluster Groups with a separation factor of '+ str(group_separation_factor), save_file='cluster_groups_separation_factor_'+str(group_separation_factor)+'.png')
+    export_formatted(data, 'clusters_separation_factor_'+str(group_separation_factor)+'.txt', include_index=True)
+    export_to_csv(data, 'clusters_separation_factor_'+str(group_separation_factor)+'.csv', delimiter=",", include_index=True)
     
     return data
