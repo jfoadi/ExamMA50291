@@ -127,6 +127,7 @@ def create_well_separated_clusters(seed_df, n_points=100, col_specs=None, separa
                 if col_specs[col]['distribution'] != 'uniform':
                     col_specs[col]['distribution'] = 'uniform'
                     print(f"col: {col} distribution changed to uniform so to not have points outside of the hyper sphere")
+        
         print("\nThe col spec has been modified to fit the constraints of the problem, the colspec with variance that best matches the input that can generate well seperated data is:\n")
         #print final colspec to see changes that were needed
         print(col_specs)

@@ -11,9 +11,11 @@ did we need sklearn?
 """
 # Main function to run the demo
 def main():
+
     print("Hello, this is a demo of the cluster_maker package.")
     print("I am going to use the same demo data that was provided in test 2")
     print("As we can see this original data is very sparce and we want to padd it out a bit")
+
     column_specs = [
         {'name': 'height', 'reps': [180, 160, 120]},
         {'name': 'weight', 'reps': [80, 60, 30]},
@@ -22,23 +24,30 @@ def main():
     
     # Create the dataframe, based on the above info
     df = cm.define_dataframe_structure(column_specs)
+
+    print("This is the dataframe we created:")
     print(df)
+    print("")
+
     example_plot(df,"Original Points")
     plt.show()
     
     print("\nWe can add simulated data to this to make it more dense")
     print("This simulated data is going to have a user defined specific distribuiton arround our original data points")
     print("As we can see in the graph below i have added 200 points to each of the original data points with a rather large variance")
+
     c_s= {
                 'height': {'distribution': 'normal', 'variance': 10.0},
                 'weight': {'distribution': 'uniform', 'variance': 10.0},
                 'age': {'distribution': 'normal', 'variance': 10.0}
             }
-    # Simulate 20 data points per group
+    
+    print("This is the distribution we are going to use:")
+    print(c_s)
+
     data = cm.simulate_data(df, 200,col_specs=c_s)
     
     example_plot(data,"Simulated Data")
-
     plt.show()
 
     print("\nThis creates issues though as the original data is well seperated but our simulated data is not")
@@ -51,6 +60,7 @@ def main():
     example_plot(data2,"Well Seperated Simulated Data")
 
     plt.show()
+    
 def example_plot(df,title,same_dims=False):
     fig = plt.figure()
 
