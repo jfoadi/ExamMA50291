@@ -43,10 +43,10 @@ There are two function in data_analyser.py.
     - Maximum value
     - Number of missing values in each column.
 
- 
+4) Add appropriate exception handling to both functions in "data_analyser.py". The exception handling should be effective, informative, and should not crash the program.
 
+Exception handling was added to both functions in data_analyser.py. The exceptions check the type of the input and print informative messages about the reasons of why the fucntion cannot generate the output. 
 
-4) 
 
 
 5) 
@@ -54,6 +54,10 @@ There are two function in data_analyser.py.
 
 
 6) 
+
+
+7) 
+
 
 ## Additional material. 
 
