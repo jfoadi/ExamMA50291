@@ -29,7 +29,7 @@
 ## DONE 2) Modify the package or the file "test1_cm.py" (not both), to make 
 ## "test1_cm.py" run successfully.
 ## [10]
-## DONE - Retype 3) Try and understand what the functions in module
+## DONE 3) Try and understand what the functions in module
 ## "data_analyser.py" do and write an appropriate, human-readable,
 ## docstring for each one of them.
 ## [10]
@@ -40,7 +40,7 @@
 ## DONE - 5) Modify the package or the file "test2_cm.py" (not both), to make 
 ## "test2_cm.py" run successfully.
 ## [10]
-## done kinda - could do lcustering on it ig 6) Write a demo file, called "demo_cm.py", that demonstrates
+## Done 6) Write a demo file, called "demo_cm.py", that demonstrates
 ## visually the joint use of define_dataframe_structure() and 
 ## simulate_data().
 ## [20]

@@ -1,14 +1,14 @@
 # Import necessary libraries
 
 try:
-    import pandas as pd
-    import numpy as np
     import matplotlib.pyplot as plt
     import cluster_maker as cm 
     import NewModule as nm
 except ImportError as e:
     print(f"Error importing required libraries: {e}")
-
+"""
+did we need sklearn?
+"""
 # Main function to run the demo
 def main():
     print("Hello, this is a demo of the cluster_maker package.")
