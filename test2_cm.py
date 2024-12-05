@@ -22,19 +22,30 @@ if __name__ == '__main__':
         {'name': 'weight', 'reps': [80, 60, 30]},
         {'name': 'age', 'reps': [40, 35, 10]}
     ]
+
+    col_specs = {
+    'height': {'distribution': 'normal', 'variance': 1},
+    'weight': {'distribution': 'normal', 'variance': 1},
+    'age': {'distribution': 'normal', 'variance': 1}
+    }
+
+
     
     # Create the dataframe, based on the above info
     df = cm.define_dataframe_structure(column_specs)
     print(df)
 
     # Simulate 20 data points per group
-    data = cm.simulate_data(df, 20)
-
+    data = cm.simulate_data(df, 20, col_specs) # Simulates 20 points per group, following randomness outlined in col_specs
+    # random_state is left blank so that the randomness is not fixed
     # Try this first
     try:
-        crr = cm.corre1ation_matrix(data)
+        crr = cm.calculate_correlation(data)
     except AttributeError as a:
+        print(f"AttributeError: {a}")
         pass
 
     # Conclusion
     print("Is everything really working?")
+    print(data)
+    print(crr)

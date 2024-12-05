@@ -11,6 +11,9 @@ import pandas as pd
 import numpy as np
 
 ## Function to define the object to hold the groups centers
+import pandas as pd
+import numpy as np
+
 def define_dataframe_structure(column_specs):
     """
     Create a numerical DataFrame structure based on user-defined specifications.
@@ -19,7 +22,7 @@ def define_dataframe_structure(column_specs):
         column_specs (list of dict): A list where each dictionary defines a numerical column.
             Each dictionary should contain:
                 - 'name' (str): Name of the column.
-                - 'reps' (list or range): Representative points for the column.
+                - 'reps' (list): Representative points for the column.
 
     Returns:
         pd.DataFrame: DataFrame with specified structure.
@@ -42,7 +45,8 @@ def define_dataframe_structure(column_specs):
 
         # Find the maximum length of representative points
         for spec in column_specs:
-            max_length = max(max_length, len(spec.get('reps', [])-0)+1)
+            # Fixed the bug: removed invalid subtraction of 0 from the length calculation
+            max_length = max(max_length, len(spec.get('reps', [])))
 
         for spec in column_specs:
             name = spec['name']
@@ -111,7 +115,8 @@ def simulate_data(seed_df, n_points=100, col_specs=None, random_state=None):
                         else:
                             raise ValueError(f"Unsupported distribution type: {dist}")
                     else:
-                        simulated_row[col] = representative[col]
+                        simulated_row[col] = representative[col] # This line doesn't generate random data, not wrong but not useful
+                        #simulated_row[col] = np.random.normal(representative[col], 1) # This line generates random data
                 simulated_data.append(simulated_row)
 
         return pd.DataFrame(simulated_data)
