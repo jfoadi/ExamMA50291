@@ -66,7 +66,7 @@ And
 
 6) Write a demo file, called "demo_cm.py", that demonstrates visually the joint use of define_dataframe_structure() and  simulate_data().
 
-A demo_cm.py was created as a guidilene of the use of the package `cluster_maker`.
+A demo_cm.py was created as a guidilene of the use of the package `cluster_maker`. Some files were exported to the file outputs. The file's names are formatted_data.txt and simulated_data.csv.
 
 
 7) Add a new function to a new module called "intelligent_clusters.py" that, based on the seed dataframe created by define_dataframe_structure(), and using simulate_data(),
