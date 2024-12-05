@@ -51,7 +51,7 @@ def calculate_descriptive_statistics(data):
         
     # Calculate descriptive statistics
         stats = data.describe(include='all').T
-        stats['missing_values'] = data.isnull().sum()
+        stats['missing_values'] = data.isnull().sum()  #add stat: Number of missing values.
         
         return stats
     except Exception as e:

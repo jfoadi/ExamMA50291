@@ -5,14 +5,7 @@
 
 ## Import cluster_maker
 import cluster_maker as cm
-
-###
-## To test cluster_maker
-## J. Foadi - University of Bath - 2024
-###
-
-## Import cluster_maker
-import cluster_maker as cm
+import cluster_maker.data_analyser as da
 
 ## Main
 if __name__ == '__main__':
@@ -32,9 +25,12 @@ if __name__ == '__main__':
 
     # Try this first
     try:
-        crr = cm.corre1ation_matrix(data)
+        crr = da.calculate_correlation(data)
     except AttributeError as a:
+        print("Attribute Error")
         pass
 
     # Conclusion
-    print("Is everything really working?")
+    print("Is everything really working?") 
+    print(crr)
+    print("Yes")
