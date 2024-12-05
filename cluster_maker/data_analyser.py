@@ -19,7 +19,7 @@ import pandas as pd
 
 """
 Calculate the correlation matrix and descriptive statistics of a DataFrame and input data user-defined specifications.
-
+Each calculation is performed in a separate function.
 Parameters:
 - data (pd.DataFrame): The DataFrame to analyse.(data type: pd.DataFrame or None)
 - column_specs (list of dict): A list where each dictionary defines a numerical column.(data type: list of dict)
