@@ -11,6 +11,9 @@ import pandas as pd
 import numpy as np
 
 ## Function to define the object to hold the groups centers
+import pandas as pd
+import numpy as np
+
 def define_dataframe_structure(column_specs):
     """
     Create a numerical DataFrame structure based on user-defined specifications.
@@ -42,7 +45,7 @@ def define_dataframe_structure(column_specs):
 
         # Find the maximum length of representative points
         for spec in column_specs:
-            max_length = max(max_length, len(spec.get('reps', [])-0)+1)
+            max_length = max(max_length, len(spec.get('reps', [])))
 
         for spec in column_specs:
             name = spec['name']
@@ -60,6 +63,7 @@ def define_dataframe_structure(column_specs):
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
         return None
+    
 
 ## Function to simulate data for all groups
 def simulate_data(seed_df, n_points=100, col_specs=None, random_state=None):
