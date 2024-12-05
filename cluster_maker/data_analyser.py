@@ -57,7 +57,7 @@ def calculate_descriptive_statistics(data):
         stats (pd.DataFrame) : an output DataFrame with statistical metrics for 
                         columns of data as well as number of missing values for each column.
 
-    This function will return a ValueError if data is emmpty.
+    This function will return a ValueError if data is empty.
 
     """
     # Calculate descriptive statistics
