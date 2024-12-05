@@ -23,7 +23,7 @@ def visualize_clusters(data):
     plt.tight_layout()
     plt.show()
 
-    # Export the data to a csv file
+    # Export the data
     data_exporter.export_to_csv(data, 'cluster_data.csv')
 
 def main():
