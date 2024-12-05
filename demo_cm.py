@@ -6,6 +6,7 @@
 ## Import modules (aware some of these are redundant)
 import numpy as np
 import matplotlib.pyplot as plt
+import pandas as pd
 import cluster_maker as cm
 import cluster_maker.data_analyser as da
 
@@ -22,17 +23,21 @@ if __name__ == '__main__':
         col_specs = {
             'Orbital Radius (10^6km)': {'distribution': 'normal', 'variance': 10.0},
             'Mass (10^24kg)': {'distribution': 'normal', 'variance': 0.2},
-            }
+        }
 
         # Create the dataframe, based on the above info
         df = cm.define_dataframe_structure(column_specs)
+        print("Data:")
         print(df)
+        print("")
 
         # Simulate 5 data points per group, as to emulate measurement uncertainties on planet mass and orbital radius.
 
         data = cm.simulate_data(df, 5, col_specs)
         crr = da.calculate_correlation(data)
+        print("Correlation Matrix:")
         print(crr)
+        print("")
         matrix = crr.to_numpy()
 
         #Scatter plotting:
@@ -44,8 +49,12 @@ if __name__ == '__main__':
 
         plt.scatter(data['Orbital Period (days)'], data['Orbital Radius (10^6km)'])
         plt.title("Orbital Period vs Orbital Radius, Correlation = "+ '{0:.3f}'.format(matrix[0,1]))
-        plt.savefig("OrbPeriod_vs_OrbRadius.png")
+        try:
+            plt.savefig("OrbPeriod_vs_OrbRadius.png")
+            print("Scatter plot exported successfully")
+        except Exception as e1:
+            print(f"Error exporting scatter plot: {e1}")
         plt.close
-        
-    except Exception as e:
-        print(f"An unexpected error occurred: {e}")
+
+    except Exception as e2:
+        print(f"An unexpected error occurred: {e2}")
