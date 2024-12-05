@@ -6,14 +6,6 @@
 ## Import cluster_maker
 import cluster_maker as cm
 
-###
-## To test cluster_maker
-## J. Foadi - University of Bath - 2024
-###
-
-## Import cluster_maker
-import cluster_maker as cm
-
 ## Main
 if __name__ == '__main__':
     # Create input for define_dataframe_structure
@@ -32,9 +24,10 @@ if __name__ == '__main__':
 
     # Try this first
     try:
-        crr = cm.corre1ation_matrix(data)
+        crr = cm.calculate_correlation(data)
+        print(crr)
     except AttributeError as a:
-        pass
+        print(f"AttributeError: {a}")
 
     # Conclusion
     print("Is everything really working?")
