@@ -13,6 +13,17 @@ column_specs = [
     {'name': 'age', 'reps': [40, 35, 10]}
 ]
 
+#height = {"height" : [180, 160, 120]}
+#weight = {"weight" : [80, 60, 30]}
+#age = {"age" : [40,35,10]}
+#column_specs = [height, weight, age]
+
+#column_specs = [
+#    {"height": [180, 160, 120]},
+#    {"weight": [80, 60, 30]},
+#    {"age" : [40, 35, 10]}
+#]
+
 ## Create the dataframe, based on the above info
 df = cm.define_dataframe_structure(column_specs)
 print(df)
