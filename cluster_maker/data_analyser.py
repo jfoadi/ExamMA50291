@@ -11,7 +11,7 @@ import pandas as pd
 
 ## Function to calculate the correlation matrix
 def calculate_correlation(data):
-    '''Goal: Using pandas module to Calculate Correlation Matrix and descriptive statistics of a given data.
+    '''Goal: Using pandas library to Calculate Correlation Matrix of a given data.
       Function: calculate_correlation(data): 
       - this function takes a pandas dataframe as input and returns covariance matrix of the data. 
       
@@ -19,7 +19,7 @@ def calculate_correlation(data):
       - data: input data which is used to calculate covariance matrix. 
        
       Returns:
-      - correlation)matrix: correlation matrix of the input data. '''
+      - correlation_matrix: correlation matrix of the input data. '''
     # Calculate the correlation matrix
     try: 
         correlation_matrix = data.corr()
@@ -31,7 +31,7 @@ def calculate_correlation(data):
     
 ## Function to calculate descriptive statistics of data
 def calculate_descriptive_statistics(data):
-    '''Goal: Using pandas module and input data to calculate descriptive statistics of the given data
+    '''Goal: Using pandas library and input data to calculate descriptive statistics of the given data.
       Function: calculate_descriptive_statistics(data):
       - This function takes the data input and returns the descriptive statistics of the data. 
       

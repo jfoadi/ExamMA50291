@@ -30,7 +30,7 @@ print("Simulated data:")
 print(data)
 
 # Plot size 
-plt.figure(figsize =(10, 6))
+plt.figure(figsize =(15, 5))
 
 # Here, plotting the height vs the weight of the data points that we have
 plt.subplot(1, 3, 1)

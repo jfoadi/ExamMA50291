@@ -32,5 +32,6 @@ if __name__ == '__main__':
         print(f"Error: {e}")
         crr = None
 
-    # Conclusion
+    # Removed print statement and instead now program is 
+    # printing output of correlation
     print(crr)
