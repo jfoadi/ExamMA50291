@@ -7,4 +7,4 @@
 import cluster_maker as cm
 
 ## Information on define_dataframe_structure
-print(cm.define_dataframe_structure.__doc__)
+print(cm.define_dataframe_structure.__doc__)  # Gets the doc string of the function 'define_dataframe_structure'
