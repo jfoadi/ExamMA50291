@@ -19,3 +19,10 @@ from .data_analyser import (
     calculate_correlation,
     calculate_descriptive_statistics
 )
+from .plot_clusters import plot_clusters
+
+from .intelligent_clusters import intelligent_cluster_groups
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
