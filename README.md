@@ -14,7 +14,9 @@ Three files are added to the repo before starting to solve the test:
 
 ## Solutions 
 
-1) 
+1)  Modify the package or the file "test0_cm.py" (not both), to make "test0_cm.py" run successfully. 
+
+The change I made on test0_cm.py was calling the define_dataframe_structure function from the cluster_maker module and printing its documentation string using the __doc__ attribute.
 
 
 2) 

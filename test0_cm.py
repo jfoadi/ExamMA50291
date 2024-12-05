@@ -7,4 +7,5 @@
 import cluster_maker as cm
 
 ## Information on define_dataframe_structure
-print(cm.define_dataframe_structure._doc_)
+print(cm.define_dataframe_structure.__doc__)
+
