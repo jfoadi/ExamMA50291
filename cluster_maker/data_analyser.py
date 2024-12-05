@@ -7,7 +7,10 @@
 ###
 
 ## Import necessary libraries
-import pandas as pd
+try:
+    import pandas as pd
+except ImportError:
+    raise ImportError("pandas is not installed. Please install pandas using 'pip install pandas'.")
 
 ## Function to calculate the correlation matrix
 def calculate_correlation(data):
@@ -20,11 +23,28 @@ def calculate_correlation(data):
     Returns:
         pd.DataFrame: The correlation matrix
     """
-    # Calculate the correlation matrix
-    correlation_matrix = data.corr()
+    try:
+        # Check if the input is a Pandas DataFrame
+        if not isinstance(data, pd.DataFrame):
+            raise TypeError("Input data must be a Pandas DataFrame.")
         
-    # Return the correlation matrix
-    return correlation_matrix
+        if not data.equals(data.select_dtypes(include='number')):
+            raise ValueError("The input DataFrame contains non-numeric columns.")
+        
+        # Calculate the correlation matrix
+        correlation_matrix = data.corr()
+
+        # Return the correlation matrix
+        return correlation_matrix
+
+    except TypeError as e:
+        print(f"TypeError: {e}")
+
+    except ValueError as e:
+        print(f"ValueError: {e}")
+
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
     
 ## Function to calculate descriptive statistics of data
 def calculate_descriptive_statistics(data):
@@ -40,8 +60,26 @@ def calculate_descriptive_statistics(data):
                        - count, unique, top, freq for object data
                       The number of missing values for each column is also included in an additional column.
     """
-    # Calculate descriptive statistics
-    stats = data.describe(include='all').T
-    stats['missing_values'] = data.isnull().sum()
+    try:
+        # Check if the input is a Pandas DataFrame
+        if not isinstance(data, pd.DataFrame):
+            raise TypeError("Input data must be a Pandas DataFrame.")
         
-    return stats
+        # Check if the DataFrame is empty
+        if data.empty:
+            raise ValueError("Input DataFrame is empty.")
+        
+        # Calculate descriptive statistics
+        stats = data.describe(include='all').T
+        stats['missing_values'] = data.isnull().sum()
+        
+        return stats
+    
+    except TypeError as e:
+        print(f"TypeError: {e}")
+    
+    except ValueError as e:
+        print(f"ValueError: {e}")
+    
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
