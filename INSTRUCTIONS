@@ -1,0 +1,55 @@
+###
+## MA50291: Programming for Data Science
+## Exam - 05/12/2024 - University of Bath
+## Duration: 3 hours, 12 noon to 3pm
+##
+## This exam consists of a series of tasks (described below).
+##
+## The highest mark obtainable for each task is indicated in square 
+## brackets, [X]. Marks are allocated following clear, correct, and 
+## effective coding. Originality and creativity are especially valued 
+## to achieve higher marks. A maximum of 100 marks can be obtained
+## if all tasks are completed successfully.
+##
+## The current directory was cloned by your fork of jfoadi/ExamMA50291.
+## It includes a Python package, "cluster_maker", and three test files,
+## named "test0_cm.py", "test1_cm.py", and "test2_cm.py". The directory
+## includes also the instructions you are reading now, "INSTRUCTIONS".
+##
+## Carry out the tasks one after the other, following the numeric 
+## order. So you should attempt task 2 only after having completed 
+## task 1, and so on.
+###
+##
+## Tasks:
+##
+## 1) Modify the package or the file "test0_cm.py" (not both), to make 
+## "test0_cm.py" run successfully. 
+## [20]
+## 2) Modify the package or the file "test1_cm.py" (not both), to make 
+## "test1_cm.py" run successfully.
+## [10]
+## 3) Try and understand what the functions in module
+## "data_analyser.py" do and write an appropriate, human-readable,
+## docstring for each one of them.
+## [10]
+## 4) Add appropriate exception handling to both functions in
+## "data_analyser.py". The exception handling should be effective,
+## informative, and should not crash the program.
+## [10]
+## 5) Modify the package or the file "test2_cm.py" (not both), to make 
+## "test2_cm.py" run successfully.
+## [10]
+## 6) Write a demo file, called "demo_cm.py", that demonstrates
+## visually the joint use of define_dataframe_structure() and 
+## simulate_data().
+## [20]
+## 7) Add a new function to a new module called 
+## "intelligent_clusters.py" that, based on the seed dataframe
+## created by define_dataframe_structure(), and using simulate_data(),
+## creates groups which are well separated from each other. Among
+## the input parameters, make sure to include one that describes group
+## separation.
+## [20]
+##
+###
