@@ -23,6 +23,7 @@ The change I made on test0_cm.py was calling the define_dataframe_structure func
  "test1_cm.py" run successfully.
 
  I changed the function define_dataframe_structure() in the package cluster_maker/dataframe_builder.py. The change was this:
+
     - max_length = max(max_length, len(spec.get('reps', [])-0)+1)
     + max_length = max(max_length, len(spec.get('reps', [])))
 
