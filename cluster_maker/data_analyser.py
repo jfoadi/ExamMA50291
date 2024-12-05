@@ -45,22 +45,24 @@ def calculate_descriptive_statistics(data):
     return stats
 
 #handling should be informative for calculate_correlation and calculate_descriptive_statistics
-try:
-#calculate_correlation
-    if not isinstance(data, pd.DataFrame):
-        raise TypeError("data must be a pandas DataFrame")
-    correlation_matrix = calculate_correlation(data)
-#calculate_descriptive_statistics
-    if not isinstance(data, pd.DataFrame):
-        raise TypeError("data must be a pandas DataFrame")
-    stats = calculate_descriptive_statistics(data)
-    return correlation_matrix, stats
-except TypeError as e:
-    print(f"Error in data_analyser: {e}")
-    return None
-except Exception as e:
-    print(f"Error in data_analyser: {e}")
-    return None
+def analyze_data(data):
+    try:
+        if not isinstance(data, pd.DataFrame):
+            raise TypeError("data must be a pandas DataFrame")
+        
+        # Calculate correlation matrix
+        correlation_matrix = calculate_correlation(data)
+        
+        # Calculate descriptive statistics
+        stats = calculate_descriptive_statistics(data)
+        return correlation_matrix, stats
+    except TypeError as e:
+        print(f"Error in data_analyser: {e}")
+        return None
+    except Exception as e:
+        print(f"Error in data_analyser: {e}")
+        return None
+
 
 
 
