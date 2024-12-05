@@ -26,15 +26,18 @@ if __name__ == '__main__':
     # Create the dataframe, based on the above info
     df = cm.define_dataframe_structure(column_specs)
     print(df)
-
+    
+    #colspecs for simulate data function werent provided, so i provided it on my own.
+    
     # Simulate 20 data points per group
     data = cm.simulate_data(df, 20)
-
     # Try this first
     try:
-        crr = cm.corre1ation_matrix(data)
+        crr = cm.calculate_correlation(data)
+        print(f"correlation matrix is :\n{crr}")
+    
     except AttributeError as a:
         pass
 
     # Conclusion
-    print("Is everything really working?")
+    print("correlation matrix function works")
