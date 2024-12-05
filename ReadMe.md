@@ -16,6 +16,17 @@
 > I have added appropriate and human-readable docstrings to both of the functions in the file 'data_analyser.py'
 
 ## 4
+> I have added relevent exception handling to the functions 'calculate_correlation' and calculate_descriptive_statistics 
+  in the file 'data_analyser.py'
+> Both of the functions take a Pandas DataFrame as an input so can use the same exception handling for both of them
+> Now, the function goes though three tests for the DataFrame provided
+    > 1: Checks if the Data frame is in the form of a Pandas DataFrame
+    > 2: Checks if the DataFrame is empty
+    > 3: Checks if the DataFrame contains any non-numeric data
+> If any of these tests fail, the function raises an appropriate error message
+> If another error occurs during the execution of the function, it is caught and a more generic error message is raised
+
+## 5
 > 
 
 
