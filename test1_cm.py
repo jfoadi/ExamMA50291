@@ -14,5 +14,5 @@ column_specs = [
 ]
 
 ## Create the dataframe, based on the above info
-df = cm.define_dataframe_structure(column_specs)
+df = cm.dataframe_builder.define_dataframe_structure(column_specs)
 print(df)
