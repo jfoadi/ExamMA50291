@@ -26,9 +26,24 @@ The change I made on test0_cm.py was calling the define_dataframe_structure func
     - max_length = max(max_length, len(spec.get('reps', [])-0)+1)
     + max_length = max(max_length, len(spec.get('reps', [])))
 
+3) Try and understand what the functions in module "data_analyser.py" do and write an appropriate, human-readable, docstring for each one of them.
 
+There are two function in data_analyser.py. 
 
-3) 
+- calculate_correlation(data) : Calculates the correlation matrix for the given data.
+- calculate_descriptive_statistics(): Calculate descriptive statistics for the given data. The descritive statistics include count, mean, standard deviation, minimum, 25th percentile, median, 75th percentile, and maximum values for each column of the data 
+    includes 
+    - Count
+    - Mean 
+    - Standard deviation 
+    - Minimum value
+    - 25th percentile
+    - Median or 50th percentile
+    - 75th percentile
+    - Maximum value
+    - Number of missing values in each column.
+
+ 
 
 
 4) 
