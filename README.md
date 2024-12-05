@@ -67,10 +67,14 @@ And
 6) Write a demo file, called "demo_cm.py", that demonstrates visually the joint use of define_dataframe_structure() and  simulate_data().
 
 A demo_cm.py was created as a guidilene of the use of the package `cluster_maker`.
- 
 
 
-7) 
+7) Add a new function to a new module called "intelligent_clusters.py" that, based on the seed dataframe created by define_dataframe_structure(), and using simulate_data(),
+creates groups which are well separated from each other. Among
+the input parameters, make sure to include one that describes group separation.
+
+The new module intelligent_clusters.py was added to the library and a demostration was included in the file demo2_cluster_cm.py
+
 
 
 ## Additional material. 
