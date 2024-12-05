@@ -73,7 +73,7 @@ A demo_cm.py was created as a guidilene of the use of the package `cluster_maker
 creates groups which are well separated from each other. Among
 the input parameters, make sure to include one that describes group separation.
 
-The new module intelligent_clusters.py was added to the library and a demostration was included in the file demo2_cluster_cm.py
+The new module intelligent_clusters.py was added to the library and a demostration was included in the file demo2_cluster_cm.py. The file outputs/intelligent_clustered_data.csv contains the results of the cluster algorithm. 
 
 
 
