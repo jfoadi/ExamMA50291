@@ -21,11 +21,18 @@ def calculate_correlation(data):
         pd.DataFrame: Correlation Matrix 
 
     """
-    # Calculate the correlation matrix
-    correlation_matrix = data.corr()
+    try:    
+        if not isinstance(data, pd.DataFrame):
+            raise TypeError("Data must be a dataframe")
+            
+        # Calculate the correlation matrix
+        correlation_matrix = data.corr()
         
-    # Return the correlation matrix
-    return correlation_matrix
+        # Return the correlation matrix
+        return correlation_matrix 
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+        return None
     
 ## Function to calculate descriptive statistics of data
 def calculate_descriptive_statistics(data):
@@ -38,8 +45,15 @@ def calculate_descriptive_statistics(data):
     Returns:
         pd.DataFrame or Series: contains descriptive stats (mean, sd, min, max, percentiles, number of missing values)
     """
-    # Calculate descriptive statistics
-    stats = data.describe(include='all').T
-    stats['missing_values'] = data.isnull().sum()
+    try:
+        if not isinstance(data, pd.DataFrame):
+            raise TypeError("Data must be a dataframe")
         
-    return stats
+    # Calculate descriptive statistics
+        stats = data.describe(include='all').T
+        stats['missing_values'] = data.isnull().sum()
+        
+        return stats
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+        return None
