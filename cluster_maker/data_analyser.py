@@ -28,12 +28,43 @@ def calculate_correlation(data):
                        each element (i, j) is the correlation coefficient 
                        between the i-th and j-th columns of the input DataFrame.
     """
-    # Calculate the correlation matrix
-    correlation_matrix = data.corr()
-        
-    # Return the correlation matrix
-    return correlation_matrix
+    try:
+        # Check if pandas is installed
+        import pandas as pd
+    except ImportError:
+        raise ImportError("Pandas is not installed")
     
+    try:
+        # Check if the input is a pandas Dataframe
+        if not isinstance(data, pd.DataFrame):
+            raise TypeError("Input must be a pandas DataFrame")
+        
+        # Check if the DataFrame is empty
+        if data.empty:
+          raise ValueError("Input DataFrame is empty")
+
+        # Calculate the correlation matrix
+        correlation_matrix = data.corr()
+        
+        # Return the correlation matrix
+        return correlation_matrix
+
+    except TypeError as te:
+        print(f"***ERROR*** - TypeError: {te}")
+        return None
+    except ValueError as ve:
+        print(f"***ERROR*** - ValueError: {ve}")
+        return None
+    except Exception as e:
+        print(f"***ERROR*** - an unexpected error occured: {e}")
+        return None
+    except ImportError as ie:
+        print(f"***ERROR*** - ImportError: {ie}")
+        return None
+        
+
+
+
 ## Function to calculate descriptive statistics of data
 def calculate_descriptive_statistics(data):
     """
@@ -51,11 +82,40 @@ def calculate_descriptive_statistics(data):
     Returns:
         pd.DataFrame: A DataFrame containing the descriptive statistics for 
                        each column, with statistics as rows and column names 
-                       as the index. The output includes a count of missing 
+                      as the index. The output includes a count of missing 
                        values for each column.
     """
-    # Calculate descriptive statistics
-    stats = data.describe(include='all').T
-    stats['missing_values'] = data.isnull().sum()
+    try:
+        import pandas as pd
+    except ImportError:
+        raise ImportError("Pandas package is not installed")
+    try:
+        # Check if the input is a pandas DataFrame
+        if not isinstance(data, pd.DataFrame):
+            raise TypeError("Input must be a pandas DataFrame")
+
+        # Check is the DataFrame is empty
+        if data.empty:
+            raise ValueError("Input DataFrame is empty")
+
+        # Calculate descriptive statistics
+        stats = data.describe(include='all').T
+        stats['missing_values'] = data.isnull().sum()
         
-    return stats
+        return stats
+    
+    except TypeError as te:
+        print(f"***ERROR*** - TypeError: {te}")
+        return None
+    
+    except ValueError as ve:
+        print(f"***ERROR*** - ValueError: {ve}")
+        return None
+    
+    except Exception as e:
+        print(f"***ERROR*** - an unexpected error occured: {e}")
+        return None
+    
+    except ImportError as ie:
+        print(f"***ERROR*** - ImportError: {ie}")
+        return None
