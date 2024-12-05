@@ -1,72 +1,67 @@
-###
-## cluster_maker
-## A package to simulate clusters of data points.
-## J. Foadi - University of Bath - 2024
-##
-## Module dataframe_builder.py
-###
+# intelligent_clusters.py
 
-## Library needed
 import pandas as pd
+from sklearn.cluster import KMeans, AffinityPropagation, MeanShift, SpectralClustering
+from sklearn.cluster import AgglomerativeClustering, DBSCAN, OPTICS, Birch
+from sklearn.mixture import GaussianMixture
 import numpy as np
 
-## Function to define the object to hold the groups centers
-def define_dataframe_structure(column_specs):
+def intelligent_clustering(df, n_clusters, separation_factor=1.0, n_points=100, algorithm="kmeans"):
     """
-    Create a numerical DataFrame structure based on user-defined specifications.
-
+    Perform clustering on the given DataFrame using the specified algorithm.
+    
     Parameters:
-        column_specs (list of dict): A list where each dictionary defines a numerical column.
-            Each dictionary should contain:
-                - 'name' (str): Name of the column.
-                - 'reps' (list or range): Representative points for the column.
-
+    - df (DataFrame): The input data to cluster.
+    - n_clusters (int): The number of clusters to form.
+    - separation_factor (float): The separation factor to control the spread of the clusters.
+    - n_points (int): The number of data points to generate for clustering.
+    - algorithm (str): The clustering algorithm to use (options: "kmeans", "affinity", "meanshift", "spectral", "agglo", "dbscan", "optics", "gmm", "birch").
+    
     Returns:
-        pd.DataFrame: DataFrame with specified structure.
+    - clustered_data (DataFrame): DataFrame containing the original data with an added 'cluster' column indicating the assigned cluster.
     """
+    
+    # Simulate data points if necessary
+    if df is None:
+        print("❌ No DataFrame provided for clustering.")
+        return None
+    
+    simulated_data = simulate_data(df, n_points=n_points, random_state=42)
+    
+    # Perform clustering based on the selected algorithm
+    if algorithm == "kmeans":
+        model = KMeans(n_clusters=n_clusters, random_state=42)
+    elif algorithm == "affinity":
+        model = AffinityPropagation(random_state=42)
+    elif algorithm == "meanshift":
+        model = MeanShift()
+    elif algorithm == "spectral":
+        model = SpectralClustering(n_clusters=n_clusters, random_state=42)
+    elif algorithm == "agglo":
+        model = AgglomerativeClustering(n_clusters=n_clusters)
+    elif algorithm == "dbscan":
+        model = DBSCAN()
+    elif algorithm == "optics":
+        model = OPTICS()
+    elif algorithm == "gmm":
+        model = GaussianMixture(n_components=n_clusters, random_state=42)
+    elif algorithm == "birch":
+        model = Birch(n_clusters=n_clusters)
+    else:
+        print(f"❌ Unknown algorithm: {algorithm}")
+        return None
+    
+    # Fit the model and predict clusters
     try:
-        if not isinstance(column_specs, list):
-            raise TypeError("column_specs must be a list of dictionaries")
-        
-        for spec in column_specs:
-            if not isinstance(spec, dict):
-                raise TypeError("Each item in column_specs must be a dictionary")
-            if 'name' not in spec or not isinstance(spec['name'], str):
-                raise ValueError("Each dictionary in column_specs must have a 'name' key with a string value")
-            if 'reps' in spec and not isinstance(spec['reps'], list):
-                raise TypeError("The 'reps' key in each dictionary must be a list if present")
-
-        # Prepare data dictionary
-        data = {}
-        max_length = 0
-
-        # Find the maximum length of representative points
-        for spec in column_specs:
-            # this line was incorrectly finding the max length of the reps
-            # max_length = max(max_length, len(spec.get('reps', [])-0)+1)
-
-            # correct line
-            max_length = max(max_length, len(spec.get('reps', [])))
-
-
-        for spec in column_specs:
-            name = spec['name']
-            reps = spec.get('reps', [])
-            # Extend numerical columns with NaN to match max_length
-            extended_points = reps + [np.nan] * (max_length - len(reps))
-            data[name] = extended_points
-
-        # Create an empty DataFrame with specified columns and data types
-        df = pd.DataFrame(data)
-        return df
-    except (TypeError, ValueError) as e:
-        print(f"Error defining DataFrame structure: {e}")
-        return None
+        cluster_labels = model.fit_predict(simulated_data)
+        simulated_data['cluster'] = cluster_labels
+        print(f"\nClustering completed using {algorithm} algorithm.")
+        return simulated_data
     except Exception as e:
-        print(f"An unexpected error occurred: {e}")
+        print(f"❌ Error performing clustering with {algorithm}: {e}")
         return None
 
-## Function to simulate data for all groups
+
 def simulate_data(seed_df, n_points=100, col_specs=None, random_state=None):
     """
     Simulate numerical data points around seed representatives, with column-specific distributions and variances.
