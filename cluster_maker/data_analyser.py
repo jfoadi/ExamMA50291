@@ -18,7 +18,7 @@ def calculate_correlation(data):
         data (pd.DataFrame): The DataFrame containing the data.
 
     Returns:
-        pd.DataFrame: Correlation Matrix 
+        pd.DataFrame: The Correlation Matrix 
 
     """
     try:    
