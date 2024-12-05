@@ -13,6 +13,7 @@
 ## the input parameters, make sure to include one that describes group
 ## separation.
 
+# Import necessary libraries
 from .dataframe_builder import simulate_data
 import pandas as pd
 import numpy as np
