@@ -6,14 +6,6 @@
 ## Import cluster_maker
 import cluster_maker as cm
 
-###
-## To test cluster_maker
-## J. Foadi - University of Bath - 2024
-###
-
-## Import cluster_maker
-import cluster_maker as cm
-
 ## Main
 if __name__ == '__main__':
     # Create input for define_dataframe_structure
