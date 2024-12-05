@@ -47,10 +47,21 @@ There are two function in data_analyser.py.
 
 Exception handling was added to both functions in data_analyser.py. The exceptions check the type of the input and print informative messages about the reasons of why the fucntion cannot generate the output. 
 
+5) Modify the package or the file "test2_cm.py" (not both), to make 
+    "test2_cm.py" run successfully.
 
+I changed the file test2_cm.py and the chanfeg as git shows were : 
 
-5) 
+     try:
+    -    crr = cm.corre1ation_matrix(data)
+    +    crr = cm.calculate_correlation(data)
+    +    print("The correlation matrix is:")
+    +    print(crr)
+And 
 
+    - print("Is everything really working?")
+    \ No newline at end of file
+    + print("Is everything really working? Now everything is working because it is possible to compute the correlation matrix!")
 
 
 6) 

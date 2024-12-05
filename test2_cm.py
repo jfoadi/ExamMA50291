@@ -32,9 +32,11 @@ if __name__ == '__main__':
 
     # Try this first
     try:
-        crr = cm.corre1ation_matrix(data)
+        crr = cm.calculate_correlation(data)
+        print("The correlation matrix is:")
+        print(crr)
     except AttributeError as a:
         pass
 
     # Conclusion
-    print("Is everything really working?")
+    print("Is everything really working? Now everything is working because it is possible to compute the correlation matrix!")
