@@ -42,7 +42,11 @@ def define_dataframe_structure(column_specs):
 
         # Find the maximum length of representative points
         for spec in column_specs:
-            max_length = max(max_length, len(spec.get('reps', [])-0)+1)
+            max_length = max(max_length, len(spec.get('reps', [])))
+            # Removed -0 and +1
+            ## -0 gave an error (-0 from a list)
+            ## +1 added an extra line to the DataFrame of nans
+            ### this caused errors later on with the simulation (numpy uniform function could not handle nan)
 
         for spec in column_specs:
             name = spec['name']
