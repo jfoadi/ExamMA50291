@@ -21,11 +21,26 @@ def calculate_correlation(data):
     Returns:
         pd.DataFrame: The correlation matrix.
     """
-    # Calculate the correlation matrix
-    correlation_matrix = data.corr()
+    # Check if the input is a DataFrame
+    try:
+        if not isinstance(data, pd.DataFrame):
+            raise TypeError("data must be a pandas DataFrame")
+        # Handle non-numeric data
+        if not any(data.dtypes.apply(lambda x: x in ['int64', 'float64'])):
+            raise ValueError("No numeric data found in DataFrame")
+        # Handle empty data
+        if data.empty:
+            raise ValueError("DataFrame is empty")
+
+        # Calculate the correlation matrix
+        correlation_matrix = data.corr()
         
-    # Return the correlation matrix
-    return correlation_matrix
+        # Return the correlation matrix
+        return correlation_matrix
+
+    except Exception as e:
+        print(f"Error calculating correlation: {e}")
+        return None
     
 ## Function to calculate descriptive statistics of data
 def calculate_descriptive_statistics(data):
@@ -40,8 +55,21 @@ def calculate_descriptive_statistics(data):
     Returns:
         pd.DataFrame: Descriptive statistics for the input data.
     """
-    # Calculate descriptive statistics
-    stats = data.describe(include='all').T
-    stats['missing_values'] = data.isnull().sum()
+
+    # Check if the input is a DataFrame
+    try:
+        if not isinstance(data, pd.DataFrame):
+            raise TypeError("data must be a pandas DataFrame")
+        # Handle empty data
+        if data.empty:
+            raise ValueError("DataFrame is empty")
         
-    return stats
+        # Calculate descriptive statistics
+        stats = data.describe(include='all').T
+        stats['missing_values'] = data.isnull().sum()
+            
+        return stats
+    
+    except Exception as e:
+        print(f"Error calculating descriptive statistics: {e}")
+        return None
