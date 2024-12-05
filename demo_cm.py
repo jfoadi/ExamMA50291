@@ -7,7 +7,6 @@ import cluster_maker as cm
 
 # Import useful libraries
 import matplotlib.pyplot as plt
-import pandas as pd
 
 # Example to demonstrate the use of the simulate_data function, using the define_dataframe_structure output as input
 print("Example to demonstrate the use of the simulate_data function, using the define_dataframe_structure output as input\n")
@@ -59,35 +58,32 @@ plt.show()
 ## Example to demonstrate the use of intelligent_clusters function
 print("\nExample to demonstrate the use of intelligent_clusters function\n")
 data = [{
-    'name': 'sales', 'reps': [160, 170, 180]},
-    {'name': 'profit', 'reps': [60, 70, 80]
+    'name':'age', 'reps': [25, 30, 35]},
+    {'name': 'income', 'reps': [50040, 60200, 60000]
 }]
 
 seed_df = cm.define_dataframe_structure(data)
 
 separation = 5
 col_specs = {
-    'sales': {
+    'age': {
         'distribution': 'normal',
         'variance': 4.0
     },
-    'profit': {
+    'income': {
         'distribution': 'uniform',
-        'variance': 5.0
+        'variance': 5000
     }
 }
 n_groups = 3
 n_points = 100
+random_state = 42
 
-separated_groups = cm.sepatared_groups(seed_df, separation,col_specs,n_groups,n_points)
-print(separated_groups)
+separated_groups = cm.sepatared_groups(seed_df, separation,col_specs,n_groups,n_points, random_state=random_state)
 
-
-import matplotlib.pyplot as plt
-
-plt.scatter(separated_groups['sales'], separated_groups['profit'])
-plt.xlabel('Sales compared to last year')
-plt.ylabel('Profit this year')
+plt.scatter(separated_groups['age'], separated_groups['income'])
+plt.xlabel('Age')
+plt.ylabel('Income')
 plt.title('Separated Groups')
 plt.grid(True)
 plt.show()

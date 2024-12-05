@@ -37,6 +37,11 @@ def sepatared_groups(data, separation=3, col_specs=None, n_groups = 3, n_points 
         if not isinstance(n_groups, int) or n_groups < 2:
             raise ValueError("n_groups must be an integer greater than 1")
         
+
+        if random_state is not None:
+            np.random.seed(random_state)
+
+
         # Initialize an empty list to store the groups
         all_groups = []
 
@@ -49,23 +54,30 @@ def sepatared_groups(data, separation=3, col_specs=None, n_groups = 3, n_points 
                 col_mean = data[col].mean()
                 col_std = data[col].std()
 
+                # Add a random component to the column value
                 random_component = np.random.uniform(-separation / 2, separation / 2) / (i+1)
 
+                # Calculate the sepatation addition to give each group a different mean
                 addition = (i - n_groups // 2) * separation * col_std
 
-                new_data[col] = (col_mean + addition + random_component)*random_component
+                # Generate the new column value
+                new_data[col] = col_mean + addition + random_component
 
-                print(new_data[col])
+                # Ensure the sign of the new value is consistent with the original mean
+                if new_data[col]*col_mean < 0:
+                    new_data[col] = -new_data[col]
 
+            # Create a new DataFrame with the new data
             new_df = pd.DataFrame(new_data, index=[0])
 
+            # Simulate data points around the new representative points
             simulated_df = simulate_data(new_df, n_points=n_points, col_specs=col_specs, random_state=random_state)
 
+            # Append the simulated data to the list of groups
             all_groups.append(simulated_df)
 
-        final_df = pd.concat(all_groups, ignore_index=True)
-
-        return final_df
+        # Concatenate all groups into a single DataFrame
+        return pd.concat(all_groups, ignore_index=True)
     
     except Exception as e:
         print(f"Error creating separated groups: {e}")
