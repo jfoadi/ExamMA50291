@@ -6,14 +6,6 @@
 ## Import cluster_maker
 import cluster_maker as cm
 
-###
-## To test cluster_maker
-## J. Foadi - University of Bath - 2024
-###
-
-## Import cluster_maker
-import cluster_maker as cm
-
 ## Main
 if __name__ == '__main__':
     # Create input for define_dataframe_structure
@@ -29,12 +21,17 @@ if __name__ == '__main__':
 
     # Simulate 20 data points per group
     data = cm.simulate_data(df, 20)
+    
+    # Added print statement if user would like to see the data generated here
+    print(data)
 
     # Try this first
     try:
-        crr = cm.corre1ation_matrix(data)
-    except AttributeError as a:
-        pass
+        crr = cm.calculate_correlation(data)
+    except AttributeError as e:
+        print(f"Error: {e}")
+        crr = None
 
-    # Conclusion
-    print("Is everything really working?")
+    # Removed print statement and instead now program is 
+    # printing output of correlation
+    print(crr)
