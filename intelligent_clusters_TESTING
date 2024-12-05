@@ -13,7 +13,7 @@ data = [{
 
 seed_df = cm.define_dataframe_structure(data)
 
-separation = 5
+separation = 3
 col_specs = {
     'age': {
         'distribution': 'normal',

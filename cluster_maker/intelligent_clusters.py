@@ -16,7 +16,7 @@ def sepatared_groups(data, separation=3, col_specs=None, n_groups = 3, n_points 
     
     Parameters:
         data (pd.DataFrame): The seed data frame.
-        separation (float): The separation between groups.
+        separation (int/float): The separation between groups (closer to 1 means groups are closer together).
         col_specs (dict): A dictionary specifying the distribution and variance for each column.
         n_groups (int): The number of groups to create.
         n_points (int): The number of points to simulate for each group.
@@ -26,18 +26,30 @@ def sepatared_groups(data, separation=3, col_specs=None, n_groups = 3, n_points 
         pd.DataFrame: Data frame with well-separated groups.
     """
     try:
+        # Exception handling
+        # Check if the input is a DataFrame
         if not isinstance(data, pd.DataFrame):
             raise TypeError("data must be a pandas DataFrame")
+        # Check if separation is a number
         if not isinstance(separation, (int, float)):
             raise TypeError("separation must be a number")
-        if col_specs is not None and not isinstance(col_specs, dict):
-            raise TypeError("col_specs must be a dictionary if provided")
-        if separation <= 0:
+        # Check if separation is greater than or equal to 1
+        if not (separation < 1):
             raise ValueError("separation must be greater than 0")
+        # Check if n_groups is an integer greater than 1 (we want multiple groups)
         if not isinstance(n_groups, int) or n_groups < 2:
             raise ValueError("n_groups must be an integer greater than 1")
+        # Check if n_points is a positive integer        
+        if not isinstance(n_points, int) or n_points <= 0:
+            raise ValueError("n_points must be a positive integer")
+        # Check if col_specs is a dictionary if provided
+        if col_specs is not None and not isinstance(col_specs, dict):
+            raise TypeError("col_specs must be a dictionary if provided")
+        # Check if random_state is an integer if provided
+        if random_state is not None and not isinstance(random_state, int):
+            raise TypeError("random_state must be an integer if provided")
         
-
+        # Set random seed if provided
         if random_state is not None:
             np.random.seed(random_state)
 
