@@ -38,11 +38,11 @@ def define_dataframe_structure(column_specs):
 
         # Prepare data dictionary
         data = {}
-        max_length = 0
+        max_length = max(len(spec.get('reps', [])) for spec in column_specs)
 
         # Find the maximum length of representative points
-        for spec in column_specs:
-            max_length = max(max_length, len(spec.get('reps', [])-0)+1)
+        #for spec in column_specs:
+        #   max_length = max(max_length, len(spec.get('reps', [])-0)+1)
 
         for spec in column_specs:
             name = spec['name']
