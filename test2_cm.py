@@ -29,11 +29,14 @@ if __name__ == '__main__':
 
     # Simulate 20 data points per group
     data = cm.simulate_data(df, 20)
-
+    print(data)
     # Try this first
     try:
-        crr = cm.corre1ation_matrix(data)
+        crr = cm.calculate_correlation(data)     # function used does not allign with the one given in package, data_analyser.py
+        print("Correlation Matrix:")             # print correlation matrix
+        print(crr)  
     except AttributeError as a:
+        print(f"Error: {a}")
         pass
 
     # Conclusion
