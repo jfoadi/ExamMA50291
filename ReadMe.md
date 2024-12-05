@@ -1,4 +1,7 @@
-# Information about the work I have done 
+# Adam Young 
+# 05/12/2024
+
+# Information about the work I have done on the package and test files:
 
 ## 1
 > I have fixed the file 'test0_cm.py' by changing '._doc_' to '.__doc__'
@@ -6,7 +9,7 @@
 > The file now runs successfully when executed (The package was not changed)
 
 ## 2
-> The error in the original test file was becasue of the line 51: max_length = max(max_length, len(spec.get('reps', []) - 0) + 1)
+> The error in the original 'test1_cm.py' was due to the line 51: max_length = max(max_length, len(spec.get('reps', []) - 0) + 1)
 > This line tries to subtract 0 from a list, which produces an error 
 > To fix this line we change it to: max_length = max(max_length, len(spec.get('reps', [])))
 > This line now correctly calculates the maximum length of the list with no errors
@@ -27,6 +30,21 @@
 > If another error occurs during the execution of the function, it is caught and a more generic error message is raised
 
 ## 5
-> 
+> I have modified the file 'test2_cm.py' so it runs successfully (not changed the package)
+> Before, the file tried to run the function 'corre1ation_matrix', which does not exist
+> However, this did not preduce an error because there was an exeception in the code, stating that if there is an 
+  error running this part of the code, that it will pass and continue running the rest of the code
+> This means that, the test file is run without errors, however, it does not produce the desired output
+> To fix this and print the desired output of the correlation matrix, I have changed corre1ation_matrix to correlation_matrix
+> Now, the test file runs successfully and prints the desired output
+> I have also improved the user interface on the output to make it look better
+
+## 6
+> I have created a demo file named 'demo_cm.py' that does the following:
+> Creates a sample DataFrame, showing some marks for different University courses, these are the seed values
+> For each course, it simulates the marks for 250 students, given two uniform and one normal distribution
+> Visually displays the distribution of the marks for each course on a histogram
+> This demo file is a good example of joint use of the 'define_dataframe_structure' and 'simulate_data' functions
+
 
 
