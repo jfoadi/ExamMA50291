@@ -64,7 +64,10 @@ And
     + print("Is everything really working? Now everything is working because it is possible to compute the correlation matrix!")
 
 
-6) 
+6) Write a demo file, called "demo_cm.py", that demonstrates visually the joint use of define_dataframe_structure() and  simulate_data().
+
+A demo_cm.py was created as a guidilene of the use of the package `cluster_maker`.
+ 
 
 
 7) 
