@@ -4,42 +4,39 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from cluster_maker import define_dataframe_structure, simulate_data
 
-def visualize_data(data):
+def visualize_clusters(data):
+    """
+    Visualizes clustered data using a scatter plot.
+
+    This function creates a scatter plot to visualize the relationship 
+    between height and weight for different groups in the provided 
+    clustered data. Each group is represented by a different color.
+
+    Parameters:
+    ----------
+    data : DataFrame
+        A pandas DataFrame containing the clustered data. 
+    Returns:
+        This function displays the scatter 
+        plot directly.
+    """
+    
     # Set the style for seaborn
     sns.set(style="whitegrid")
 
-    # Create a figure with a specified size
-    plt.figure(figsize=(10, 15))
+    # Create a scatter plot for the clustered data
+    plt.figure(figsize=(10, 8))
+    sns.scatterplot(data=data, x="height", y="weight", hue="group", palette="deep", s=100, alpha=0.9)
 
-    # Scatter plot for Height vs Weight
-    plt.subplot(3, 1, 1)
-    sns.scatterplot(data=data, x="height", y="weight", color="blue", s=100)
-    plt.title("Height vs Weight", fontsize=16)
+    # Add titles and labels
+    plt.title("Cluster Visualization: Height vs Weight", fontsize=16)
     plt.xlabel("Height (cm)", fontsize=14)
     plt.ylabel("Weight (kg)", fontsize=14)
+    plt.legend(title='Group', bbox_to_anchor=(1.05, 1), loc='upper left')
     plt.grid(True)
 
-    # Scatter plot for Age vs Weight
-    plt.subplot(3, 1, 2)
-    sns.scatterplot(data=data, x="age", y="weight", color="orange", s=100)
-    plt.title("Age vs Weight", fontsize=16)
-    plt.xlabel("Age (years)", fontsize=14)
-    plt.ylabel("Weight (kg)", fontsize=14)
-    plt.grid(True)
-
-    # Scatter plot for Height vs Age
-    plt.subplot(3, 1, 3)
-    sns.scatterplot(data=data, x="height", y="age", color="green", s=100)
-    plt.title("Height vs Age", fontsize=16)
-    plt.xlabel("Height (cm)", fontsize=14)
-    plt.ylabel("Age (years)", fontsize=14)
-    plt.grid(True)
-
-    # Adjust layout to prevent overlap
+    # Show the plot
     plt.tight_layout()
-    plt.suptitle("Visualizations of Simulated Data", fontsize=20, y=1.02)
-
-    # Show the plots
     plt.show()
 
 def main():
