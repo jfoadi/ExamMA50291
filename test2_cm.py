@@ -24,7 +24,7 @@ if __name__ == '__main__':
 
     # Try this first
     try:
-        # not the right function for correlation matrix so make sure to display error not pass over it
+    # Not the right function for correlation matrix so make sure to display error not pass over it
         crr = cm.corre1ation_matrix(data)
         print(crr)
     except AttributeError as a:
@@ -33,7 +33,7 @@ if __name__ == '__main__':
         print(f"An error occured {e}")
 
     try:
-        # put the right function in for correlation matrix and display it
+        # Put the right function in for correlation matrix and display it (no error displayed)
         crr = cm.calculate_correlation(data)
         print(crr)
     except AttributeError as a:
@@ -41,5 +41,5 @@ if __name__ == '__main__':
     except Exception as e:
         print(f"An error occured {e}")
 
-    # Conclusion
-    print("Is everything really working?")
+# Conclusion
+print("Is everything really working?")
