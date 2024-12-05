@@ -17,7 +17,7 @@ except ImportError:
 try:
     import numpy as np
 except ImportError:
-    print("Error: numpy library is not installed. Please install it using 'pip install pandas'.")
+    print("Error: numpy library is not installed. Please install it using 'pip install numpy'.")
     np = None  
 
 ## Function to calculate the correlation matrix

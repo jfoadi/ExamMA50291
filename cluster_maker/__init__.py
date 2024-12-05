@@ -19,3 +19,4 @@ from .data_analyser import (
     calculate_correlation,
     calculate_descriptive_statistics
 )
+from .plot_clusters import plot_clusters
