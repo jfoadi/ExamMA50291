@@ -21,8 +21,9 @@ def calculate_correlation(data):
     Returns:
         pd.DataFrame: The correlation matrix.
     """
-    # Check if the input is a DataFrame
+    # Included exception handling
     try:
+        # Check if the input is a DataFrame
         if not isinstance(data, pd.DataFrame):
             raise TypeError("data must be a pandas DataFrame")
         # Handle non-numeric data
@@ -46,8 +47,8 @@ def calculate_correlation(data):
 def calculate_descriptive_statistics(data):
     """
     Calculates descriptive statistics for the given dataframe.
-    Depending on the data type, the output will include count, mean, std, min, 25%, 50%, 75%, max.
-    Or for object data, the output will include count, unique, top, freq.
+    Depending on the data type, the output will include count, mean, std, min, 25%, 50%, 75%, max for numeric data.
+    Or for object data (such as strings), the output will include count, unique, top, freq.
 
     Parameters:
         data (pd.DataFrame): The input data.
@@ -56,13 +57,15 @@ def calculate_descriptive_statistics(data):
         pd.DataFrame: Descriptive statistics for the input data.
     """
 
-    # Check if the input is a DataFrame
+    # Included exception handling
     try:
+        # Check if the input is a DataFrame
         if not isinstance(data, pd.DataFrame):
             raise TypeError("data must be a pandas DataFrame")
         # Handle empty data
         if data.empty:
             raise ValueError("DataFrame is empty")
+        # Don't need to check for numeric data since describe() handles that
         
         # Calculate descriptive statistics
         stats = data.describe(include='all').T
