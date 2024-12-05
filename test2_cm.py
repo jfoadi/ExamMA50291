@@ -46,7 +46,7 @@ if __name__ == '__main__':
         }
     }
     data = cm.simulate_data(df, 20, col_specs=col_specs)
-    print(f'Simulated data:\n{data}')
+    print(f'\nSimulated data:\n{data}')
 
     # Try this first
     try:

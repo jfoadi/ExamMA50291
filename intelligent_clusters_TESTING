@@ -4,22 +4,27 @@ import cluster_maker as cm
 # Import useful libraries
 import matplotlib.pyplot as plt
 
+import numpy as np
+
 ## Example to demonstrate the use of intelligent_clusters function
 print("\nExample to demonstrate the use of intelligent_clusters function\n")
 data = [{
-    'name':'age', 'reps': [25, 30, 35]},
-    {'name': 'income', 'reps': [50040, 60200, 60000]
+    'name':'X', 'reps': [1, 5, 30]},
+    {'name': 'Y', 'reps': [2000, 20000, 50000]
 }]
 
 seed_df = cm.define_dataframe_structure(data)
 
+print(seed_df)
+
+# Define the parameters for the separated_groups function
 separation = 3
 col_specs = {
-    'age': {
+    'X': {
         'distribution': 'normal',
         'variance': 4.0
     },
-    'income': {
+    'Y': {
         'distribution': 'uniform',
         'variance': 5000
     }
@@ -31,9 +36,10 @@ random_simulate_state = 42
 
 separated_groups = cm.sepatared_groups(seed_df, separation, col_specs, n_groups, n_points, random_state=random_state, random_simulate_state=random_simulate_state)
 
-plt.scatter(separated_groups['age'], separated_groups['income'])
-plt.xlabel('Age')
-plt.ylabel('Income')
+# Plot the separated groups
+plt.scatter(separated_groups['X'], separated_groups['Y'])
+plt.xlabel('X')
+plt.ylabel('Y')
 plt.title('Separated Groups')
 plt.grid(True)
 plt.show()
