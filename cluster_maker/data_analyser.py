@@ -32,11 +32,30 @@ def calculate_correlation(data):
     This function will return a ValueError if there are no numeric columns in the data or if it is emmpty.
     
     """
-    # Calculate the correlation matrix
-    correlation_matrix = data.corr()
-        
-    # Return the correlation matrix
-    return correlation_matrix
+
+    try:
+        if not isinstance(data, pd.DataFrame):
+            raise TypeError("Please input a Pandas DataFrame.")
+        if data.empty:
+            raise ValueError("Please input a non-empty DataFrame")
+        if data.select_dtypes(include=['number']).empty:
+            raise ValueError("Please ensure the input DataFrame contrains numeric columns")
+        # Calculate the correlation matrix
+        correlation_matrix = data.corr()
+
+        # Return the correlation matrix
+        return correlation_matrix
+    
+
+    except(TypeError, ValueError) as error:
+        print(f"Unable to calcuate correlation coefficients due to {error}")
+        return None
+    except(Exception) as error:
+        print(f"Unable to calculate correlation coefficient due to an unidentified error: {error}")
+        return None
+    
+
+    
     
 ## Function to calculate descriptive statistics of data
 def calculate_descriptive_statistics(data):
@@ -60,8 +79,22 @@ def calculate_descriptive_statistics(data):
     This function will return a ValueError if data is empty.
 
     """
-    # Calculate descriptive statistics
-    stats = data.describe(include='all').T
-    stats['missing_values'] = data.isnull().sum()
-        
-    return stats
+    try:
+        if not isinstance(data, pd.DataFrame):
+            raise TypeError("Please input a Pandas DataFrame.")
+        if data.empty:
+            raise ValueError("Please input a non-empty DataFrame")
+        if data.select_dtypes(include=['number']).empty:
+            raise ValueError("Please ensure the input DataFrame contrains numeric columns")
+        # Calculate descriptive statistics
+        stats = data.describe(include='all').T
+        stats['missing_values'] = data.isnull().sum()
+
+        return stats
+    except(TypeError, ValueError) as error:
+        print(f"Unable to provide statistical information due to {error}")
+        return None
+    except(Exception) as error:
+        print(f"Unable to provide statistical information due to an unidentified error: {error}")
+        return None
+    
