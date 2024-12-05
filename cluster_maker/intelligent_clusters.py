@@ -3,6 +3,19 @@ import numpy as np
 from cluster_maker import simulate_data
 
 def create_separated_clusters(df, points = 1000, col_specs = None, separation = 100, random_state = None):
+    """
+    Create well-separated clusters based on a seed DataFrame.
+
+    Parameters:
+        df (pd.DataFrame): Seed DataFrame with representative points.
+        points (int): Number of points to generate per representative.
+        col_specs (dict, optional): Specifications for column-wise data simulation.
+        separation (int): Minimum distance to separate clusters.
+        random_state (int, optional): Seed for random number generation.
+
+    Returns:
+        pd.DataFrame: DataFrame containing the simulated data points.
+    """
 
     if not isinstance(df, pd.DataFrame):
         raise TypeError("Input provided should be seed dataframe created by define_dataframe_structure")
