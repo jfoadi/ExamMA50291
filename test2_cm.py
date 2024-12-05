@@ -20,7 +20,14 @@ if __name__ == '__main__':
     print(df)
 
     # Simulate 20 data points per group
-    data = cm.simulate_data(df, 20)
+    col_specs = {
+        'height': {'distribution': 'normal', 'variance': 5},
+        'weight': {'distribution': 'normal', 'variance': 3},
+        'age': {'distribution': 'normal', 'variance': 2}
+    }
+    data = cm.simulate_data(df, n_points=20, col_specs=col_specs)
+    print('\nSimulated data points:')
+    print(data.head())
 
     # Try this first
     try:
