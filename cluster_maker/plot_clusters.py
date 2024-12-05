@@ -9,6 +9,6 @@ def plot_clusters(data, x='X', y='Y', cluster_col='Cluster', title='Cluster Plot
         plt.scatter(cluster_data['X'], cluster_data['Y'], label=f'Cluster {cluster}')
     plt.xlabel('X')
     plt.ylabel('Y')
-    plt.title('Simulated Data from cluster_maker')
+    plt.title(title)
     plt.legend()
     plt.show()
