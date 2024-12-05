@@ -30,4 +30,16 @@ plt.xlabel("height")
 plt.ylabel("weight")
 print(data)
 plt.show()
-  
+
+
+#this part is to check working of create clusters function in the intelligent clusters module.
+simulated_data = cm.create_clusters(data, n_points=50, col_specs=col_specs, separation_factor=30, n_clusters=3)
+print(simulated_data)
+plt.figure(figsize=(10, 6))
+plt.scatter(simulated_data['height'], simulated_data['weight'], alpha=0.6, c='blue', label='Simulated Points')
+plt.xlabel("Height")  # Add x-label
+plt.ylabel("Weight")  # Add y-label
+plt.title("Scatter Plot of Simulated Data") 
+plt.grid(True) 
+plt.legend()  # Add legend
+plt.show()
