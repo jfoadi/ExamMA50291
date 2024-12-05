@@ -43,8 +43,25 @@
 > I have created a demo file named 'demo_cm.py' that does the following:
 > Creates a sample DataFrame, showing some marks for different University courses, these are the seed values
 > For each course, it simulates the marks for 250 students, given two uniform and one normal distribution
-> Visually displays the distribution of the marks for each course on a histogram
+> Visually displays the distribution of the marks for each course on a histogram 
+> This is outputted to a file named 'Demo_Plot.png'
 > This demo file is a good example of joint use of the 'define_dataframe_structure' and 'simulate_data' functions
 
+## 7 
+> I have created a new file intelligent_clusters.py that contains a function called 'intelligent_clusters' that:
+> Creates well-separated clusters based on a seed DataFrame of representative points for each group
+> Simulates data points around these representatives, ensuring that the data points are separated by a specified 
+  distance between groups
+> Takes input parameters such as the number of points to simulate per group, column specifications, random seed, and 
+  group separation distance
+> Generates clusters by adjusting the seed points with an offset that increases with the group index, ensuring the groups 
+  are spaced apart
+> Returns a DataFrame containing all the simulated points, with the groups well separated
+> Uses the simulate_data function to generate the actual data for each group, based on the adjusted representatives
+> Then a demo file Demo2.py was made, this showcases the use of the function and produces a plot in Demo2.png
 
+
+# Gen AI statement:
+> I used Gen AI to help understand the functions and assist with the coding and commenting process.
+> I carefully reviewed each line of code to ensure it was accurate and made sense in the context of the questions.
 

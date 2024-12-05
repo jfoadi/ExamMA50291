@@ -49,7 +49,7 @@ if __name__ == '__main__':
     simulated_data = cm.simulate_data(df, n_points=250, col_specs=col_specs, random_state=666)
 
     print('\n> Successfully simulated 250 marks per module')
-    print('> Open the file Demo_Plot.py to see a visual representation of the simulated data\n')
+    print('> Open the file Demo_Plot.png to see a visual representation of the simulated data\n')
 
     # Plot the simulated data:
 
@@ -71,4 +71,3 @@ if __name__ == '__main__':
     plt.legend(loc='upper right')
     plt.savefig('Demo_Plot.png') 
     plt.close()
-
