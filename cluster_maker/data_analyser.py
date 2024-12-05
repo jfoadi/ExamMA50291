@@ -38,15 +38,16 @@ def calculate_correlation(data):
             raise TypeError("Data must be a pandas DataFrame.")
         if data.empty: # Check if DataFrame is empty
             raise ValueError("Input DataFrame is empty.")
-        if not np.issubdtype(data.dtypes, np.number).all(): # Check if all columns are numbers
-            raise ValueError("All columns in the DataFrame must be numbers.")
         if data.isnull().values.any():  # Check for null data values
             raise ValueError("Input DataFrame contains NaN values.")
         if np.isinf(data.values).any(): # check for infinite values
             raise ValueError("Input DataFrame contains infinite values.")
-
+        # selects only numeric data
+        numeric_data = data.select_dtypes(include=[np.number])
+        if numeric_data.empty:
+            raise ValueError("No numeric columns found in the DataFrame.")
         # Calculate the correlation matrix
-        correlation_matrix = data.corr()
+        correlation_matrix = numeric_data.corr()
         
         # Return the correlation matrix
         return correlation_matrix
