@@ -1,3 +1,11 @@
+###
+## cluster_maker
+## A package to simulate clusters of data points.
+## J. Foadi - University of Bath - 2024
+##
+## intelligent_clusters.py
+###
+
 ## 7) Add a new function to a new module called 
 ## "intelligent_clusters.py" that, based on the seed dataframe
 ## created by define_dataframe_structure(), and using simulate_data(),
